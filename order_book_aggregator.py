@@ -55,4 +55,5 @@ class OrderBookAggregator:
         raise Exception('Amount is too big!')
 
     def print_price(self, amount):
+        assert amount > 0, 'Amount cannot be negative!'
         print(f'B: {format(self.get_buy_price(amount), ".2f")}\nS: {format(self.get_sell_price(amount), ".2f")}')

@@ -30,3 +30,15 @@ class TestOrderBookAggregator(TestCase):
 
         self.assertEqual(format(oba.get_buy_price(1), '.1f'), '6.4')
         self.assertEqual(format(oba.get_sell_price(1), '.1f'), '4.4')
+
+    def test_print_price_doesnt_allow_negative_amount(self):
+        oba = OrderBookAggregator('something.json', testing=True)
+
+        book = {
+            'asks': [{'price': str(float(i)), 'amount': str(i/10)} for i in range(10, 5, -1)],
+            'bids': [{'price': str(float(i)), 'amount': str(i/10)} for i in range(1, 6)]
+        }
+        oba.merge(book)
+
+        with self.assertRaises(AssertionError):
+            oba.print_price(-1)
