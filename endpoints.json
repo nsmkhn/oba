@@ -1,0 +1,5 @@
+{
+    "coinbase": "https://api.pro.coinbase.com/products/BTC-USD/book?level=2",
+    "gemini": "https://api.gemini.com/v1/book/BTCUSD",
+    "kraken": "https://api.kraken.com/0/public/Depth?pair=XBTUSD"
+}
